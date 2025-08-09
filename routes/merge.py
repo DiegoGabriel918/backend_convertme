@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 import os
 import uuid
-from services.document_service import convert
+from services.document_service import DocumentService
 from werkzeug.utils import secure_filename
 
 merge_bp = Blueprint("merge", __name__)
@@ -25,7 +25,7 @@ def merge_files():
         saved_paths.append(path)
 
     try:
-        merged_file = convert.merge_documents(saved_paths)
+        merged_file = DocumentService.merge_documents(saved_paths)
         return jsonify({
             "message": "Arquivos mesclados com sucesso",
             "output_file": merged_file

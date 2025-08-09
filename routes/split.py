@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 import os
 import uuid
-from services.document_service import convert
+from services.document_service import DocumentService
 from werkzeug.utils import secure_filename
 
 split_bp = Blueprint("split", __name__)
@@ -27,7 +27,7 @@ def split_file():
         return jsonify({"error": "Informe página inicial e final"}), 400
 
     try:
-        split_files = convert.split_document(file_path, int(start_page), int(end_page))
+        split_files = DocumentService.split_document(file_path, int(start_page), int(end_page))
         return jsonify({
             "message": "Arquivo dividido com sucesso",
             "output_files": split_files
