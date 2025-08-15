@@ -24,3 +24,10 @@ SUPPORTED_CONVERSIONS = {
     "mov": ["mp4", "avi", "mkv"],
     "mkv": ["mp4", "avi", "mov"]
 }
+
+FILE_TYPE_MAPPING = {
+    "document": ["docx", "xlsx", "pptx", "pdf", "txt"],
+    "image": ["jpg", "jpeg", "png", "gif", "bmp"],
+    "audio": ["mp3", "wav", "aac", "ogg"],
+    "video": ["mp4", "avi", "mkv", "mov"]
+}

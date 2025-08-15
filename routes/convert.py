@@ -3,6 +3,7 @@ import os
 import uuid
 from services.converter_factory import ConverterFactory
 from werkzeug.utils import secure_filename
+from utils.file_utils import allowed_file
 
 convert_bp = Blueprint("convert", __name__)
 
@@ -22,6 +23,10 @@ def convert_file():
 
     if not to:
         return jsonify({"error": "Formato de saída não especificado"}), 400
+
+    # Validar a extensão do arquivo
+    if not allowed_file(file.filename):
+        return jsonify({"error": "Tipo de arquivo não suportado"}), 400
 
     filename = secure_filename(file.filename)
     unique_name = f"{uuid.uuid4()}_{filename}"
