@@ -14,20 +14,18 @@ SUPPORTED_CONVERSIONS = {
     "webp": ["jpg", "png", "pdf"],
 
     # Áudio
-    "mp3": ["wav", "ogg"],
-    "wav": ["mp3", "ogg"],
+    "mp3": ["wav"],
+    "wav": ["mp3"],
     "ogg": ["mp3", "wav"],
 
     # Vídeo
-    "mp4": ["avi", "mov", "mkv"],
-    "avi": ["mp4", "mov", "mkv"],
-    "mov": ["mp4", "avi", "mkv"],
-    "mkv": ["mp4", "avi", "mov"]
+    "mp4": ["mkv"],
+    "mkv": ["mp4"]
 }
 
 FILE_TYPE_MAPPING = {
     "document": ["docx", "xlsx", "pptx", "pdf", "txt"],
     "image": ["jpg", "jpeg", "png", "gif", "bmp"],
-    "audio": ["mp3", "wav", "aac", "ogg"],
+    "audio": ["mp3", "wav"],
     "video": ["mp4", "avi", "mkv", "mov"]
 }

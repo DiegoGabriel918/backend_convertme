@@ -24,13 +24,18 @@ def convert_file():
     if not to:
         return jsonify({"error": "Formato de saída não especificado"}), 400
 
-    # Validar a extensão do arquivo
     if not allowed_file(file.filename):
         return jsonify({"error": "Tipo de arquivo não suportado"}), 400
 
     filename = secure_filename(file.filename)
-    unique_name = f"{uuid.uuid4()}_{filename}"
-    file_path = os.path.join(UPLOAD_FOLDER, unique_name)
+
+    # Criar um diretório único para esta conversão
+    conversion_id = str(uuid.uuid4())
+    conversion_dir = os.path.join(UPLOAD_FOLDER, conversion_id)
+    os.makedirs(conversion_dir, exist_ok=True)
+
+    # Salvar o arquivo dentro do diretório único com seu nome original
+    file_path = os.path.join(conversion_dir, filename)
     file.save(file_path)
 
     try:

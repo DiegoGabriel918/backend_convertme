@@ -1,6 +1,5 @@
 import os
 from PIL import Image
-from config import UPLOAD_FOLDER
 
 class ImageService:
     """Serviço para manipulação de imagens usando o padrão Strategy."""
@@ -21,9 +20,10 @@ class ImageService:
         Converte a imagem para o formato de saída desejado.
         Usa um dicionário de 'strategies' para escolher o método de conversão.
         """
-        filename = os.path.basename(input_path)
-        output_filename = f"{os.path.splitext(filename)[0]}.{output_format}"
-        output_path = os.path.join(UPLOAD_FOLDER, output_filename)
+        input_dir = os.path.dirname(input_path)
+        base_filename = os.path.basename(input_path)
+        output_filename = f"{os.path.splitext(base_filename)[0]}.{output_format}"
+        output_path = os.path.join(input_dir, output_filename)
         
         # Seleciona a estratégia com base no formato de saída
         strategy = self._strategies.get(output_format.lower())
