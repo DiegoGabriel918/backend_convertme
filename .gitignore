@@ -1,0 +1,19 @@
+# Ambientes virtuais
+.venv
+venv
+
+# Caches e arquivos compilados do Python
+__pycache__/
+*.pyc
+
+# Arquivos de ambiente - NUNCA comite segredos!
+.env*
+
+# Pasta de uploads
+# Ignora todo o conteudo, mas mantem a pasta por causa do .gitkeep
+uploads/*
+!uploads/.gitkeep
+
+# Pasta de uploads temporarios
+temp_uploads/*
+!temp_uploads/.gitkeep
